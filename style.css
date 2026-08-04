@@ -1,0 +1,42 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f2f2f2;
+    margin:40px;
+}
+
+.container{
+    background:white;
+    width:800px;
+    margin:auto;
+    padding:30px;
+    border:1px solid #cccccc;
+}
+
+h1{
+    color:#1f4e79;
+}
+
+h2{
+    color:#2e75b6;
+}
+
+p{
+    line-height:1.6;
+}
+
+ul{
+    line-height:1.8;
+}
+
+a{
+    color:blue;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+hr{
+    margin:20px 0;
+}
