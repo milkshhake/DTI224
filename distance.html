@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distance from KBU</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f4f4f4;
+        text-align:center;
+        margin-top:60px;
+    }
+
+    .container{
+        width:420px;
+        margin:auto;
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+
+    button{
+        padding:10px 20px;
+        font-size:16px;
+        cursor:pointer;
+        margin-top:15px;
+    }
+
+    #result{
+        margin-top:20px;
+        font-size:18px;
+        line-height:1.8;
+    }
+</style>
+</head>
+
+<body>
+<nav class="site-nav">
+    <a href="index.html">Resume</a>
+    <a href="hobby.html">Hobbies</a>
+    <a href="unit-converter.html">Unit Converter</a>
+    <a href="grade.html">Grade Calculator</a>
+    <a href="change.html">Change Calculator</a>
+    <a href="distance.html">Distance</a>
+</nav>
+<hr>
+
+
+<div class="container">
+    <h2>How far from University?</h2>
+    <button onclick="getLocation()">Get My Location</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+
+// Kasem Bundit University (Romklao Campus)
+const universityLat = 13.8069;
+const universityLon = 100.7398;
+
+function getLocation(){
+
+    if(navigator.geolocation){
+
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+    }else{
+
+        document.getElementById("result").innerHTML =
+        "Geolocation is not supported by this browser.";
+
+    }
+
+}
+
+function showPosition(position){
+
+    let userLat = position.coords.latitude;
+    let userLon = position.coords.longitude;
+
+    // Assignment formula
+    let distance = Math.sqrt(
+        Math.pow(userLat - universityLat,2) +
+        Math.pow(userLon - universityLon,2)
+    );
+
+    document.getElementById("result").innerHTML =
+    "<b>Your Latitude:</b> " + userLat + "<br>" +
+    "<b>Your Longitude:</b> " + userLon + "<br><br>" +
+
+    "<b>KBU Latitude:</b> " + universityLat + "<br>" +
+    "<b>KBU Longitude:</b> " + universityLon + "<br><br>" +
+
+    "<b>Distance = </b>" +
+    distance.toFixed(6);
+
+}
+
+function showError(error){
+
+    switch(error.code){
+
+        case error.PERMISSION_DENIED:
+            document.getElementById("result").innerHTML =
+            "Permission denied.";
+            break;
+
+        case error.POSITION_UNAVAILABLE:
+            document.getElementById("result").innerHTML =
+            "Location unavailable.";
+            break;
+
+        case error.TIMEOUT:
+            document.getElementById("result").innerHTML =
+            "Request timed out.";
+            break;
+
+        default:
+            document.getElementById("result").innerHTML =
+            "Unknown error.";
+    }
+
+}
+
+</script>
+
+
+<hr>
+<p class="back-link"><a href="index.html">← Back to Resume</a></p>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.site-nav {
+    margin-bottom: 10px;
+}
+
+.site-nav a {
+    margin-right: 14px;
+    text-decoration: none;
+}
+
+.back-link a {
+    text-decoration: none;
+}
